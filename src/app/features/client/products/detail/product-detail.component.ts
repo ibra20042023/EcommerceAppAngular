@@ -80,7 +80,7 @@ export class ProductDetailComponent implements OnInit {
     const product = this.product();
     if (product) {
       this.cartService.addToCart(product, 1);
-      this.notificationService.show(`${product.name} agregado al carrito`, 'success');
+      this.notificationService.show(`${product.name} Ajouté au panier`, 'success');
     }
   }
 

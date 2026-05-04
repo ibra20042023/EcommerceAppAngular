@@ -1,6 +1,6 @@
 <div>
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-        <h1 class="text-3xl font-bold text-text-main">Gestión de Pedidos</h1>
+        <h1 class="text-3xl font-bold text-text-main">Gestion des commandes</h1>
     </div>
 
     <!-- Search Filter -->
@@ -18,9 +18,9 @@
 
     <!-- Cancel Confirmation Modal -->
     @if (showCancelConfirm()) {
-    <app-confirm-modal title="Cancelar Pedido"
-        message="¿Estás seguro de que deseas cancelar este pedido? Esta acción no se puede deshacer." type="danger"
-        confirmText="Cancelar Pedido" (onConfirm)="cancelOrder()" (onCancel)="showCancelConfirm.set(false)">
+    <app-confirm-modal title="annuler Pedido"
+        message="¿Estás seguro de que deseas annuler este pedido? Esta acción no se puede deshacer." type="danger"
+        confirmText="annuler Pedido" (onConfirm)="cancelOrder()" (onCancel)="showCancelConfirm.set(false)">
     </app-confirm-modal>
     }
 
@@ -34,17 +34,17 @@
                 <thead class="bg-surface-subtle border-b border-border">
                     <tr>
                         <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">
-                            Número de Pedido</th>
+                            Numéro de commande</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">
-                            Usuario</th>
+                            Utilisateur</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">
                             Total</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">
-                            Estado</th>
+                            État</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">
-                            Fecha</th>
+                            Date</th>
                         <th class="px-6 py-4 text-right text-xs font-bold text-text-muted uppercase tracking-wider">
-                            Acciones</th>
+                            Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-border">
@@ -60,7 +60,7 @@
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-text-main">
-                            ${{ order.total.toFixed(2) }}
+                            {{ order.total.toFixed(2) }} dh
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <span class="px-3 py-1 rounded-full text-xs font-bold border"
@@ -87,7 +87,7 @@
                                 @if (canCancel(order.status)) {
                                 <button (click)="confirmCancel(order.id)"
                                     class="p-2 text-destructive hover:bg-destructive/10 rounded-lg transition-colors"
-                                    title="Cancelar pedido">
+                                    title="annuler pedido">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M6 18L18 6M6 6l12 12" />
@@ -106,7 +106,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                                 </svg>
-                                <p class="text-text-muted text-lg">No se encontraron pedidos</p>
+                                <p class="text-text-muted text-lg">Aucune commande n'a été trouvée</p>
                             </div>
                         </td>
                     </tr>
@@ -119,18 +119,18 @@
         @if (totalItems() > 0) {
         <div class="px-6 py-4 border-t border-border flex items-center justify-between bg-surface-subtle">
             <div class="text-sm text-text-muted">
-                Mostrando <span class="font-medium">{{ (currentPage() - 1) * pageSize() + 1 }}</span> a <span
+                Affichage <span class="font-medium">{{ (currentPage() - 1) * pageSize() + 1 }}</span> a <span
                     class="font-medium">{{ Math.min(currentPage() * pageSize(), totalItems()) }}</span> de <span
-                    class="font-medium">{{ totalItems() }}</span> resultados
+                    class="font-medium">{{ totalItems() }}</span> résultats
             </div>
             <div class="flex space-x-2">
                 <button (click)="onPageChange(currentPage() - 1)" [disabled]="!hasPreviousPage()"
                     class="px-3 py-1 rounded-md border border-border bg-surface text-text-muted hover:bg-surface-subtle disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-                    Anterior
+                    Précédent
                 </button>
                 <button (click)="onPageChange(currentPage() + 1)" [disabled]="!hasNextPage()"
                     class="px-3 py-1 rounded-md border border-border bg-surface text-text-muted hover:bg-surface-subtle disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-                    Siguiente
+                    Suivant
                 </button>
             </div>
         </div>

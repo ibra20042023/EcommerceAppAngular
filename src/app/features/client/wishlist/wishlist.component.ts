@@ -40,7 +40,7 @@ export class WishlistComponent {
 
   addToCart(item: Product): void {
     this.cartService.addToCart(item, 1);
-    this.notificationService.showSuccess('Producto agregado al carrito');
+    this.notificationService.showSuccess('Produit ajouté au panier');
   }
 
   viewProductDetail(productId: number): void {

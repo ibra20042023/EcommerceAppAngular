@@ -12,7 +12,7 @@ export class ConfirmModalComponent {
   message = input<string>('¿Estás seguro de realizar esta acción?');
   type = input<ConfirmType>('danger');
   confirmText = input<string>('Confirmar');
-  cancelText = input<string>('Cancelar');
+  cancelText = input<string>('annuler');
 
   onConfirm = output<void>();
   onCancel = output<void>();

@@ -1,12 +1,12 @@
 <div>
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-        <h1 class="text-3xl font-bold text-text-main">Gestión de Usuarios</h1>
+        <h1 class="text-3xl font-bold text-text-main">Gestion des utilisateurs</h1>
     </div>
 
     <!-- Search and Filters -->
     <div class="mb-6">
         <div class="relative">
-            <input type="text" [formControl]="searchControl" placeholder="Buscar usuarios..."
+            <input type="text" [formControl]="searchControl" placeholder="Rechercher des utilisateurs..."
                 class="w-full pl-10 pr-4 py-2 bg-surface border border-border rounded-lg text-text-main focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" />
             <svg class="w-5 h-5 text-text-muted absolute left-3 top-2.5" fill="none" stroke="currentColor"
                 viewBox="0 0 24 24">
@@ -18,17 +18,17 @@
 
     <!-- Role Toggle Confirmation Modal -->
     @if (showRoleConfirm()) {
-    <app-confirm-modal title="Cambiar Rol de Usuario"
-        [message]="'¿Estás seguro de que deseas cambiar el rol de ' + userToToggleRole()?.firstName + ' ' + userToToggleRole()?.lastName + '?'"
-        type="warning" confirmText="Cambiar Rol" (onConfirm)="toggleRole()" (onCancel)="showRoleConfirm.set(false)">
+    <app-confirm-modal title="changer de rôle "
+        [message]="'Es-tu sûr de vouloir modifier le rôle de ' + userToToggleRole()?.firstName + ' ' + userToToggleRole()?.lastName + '?'"
+        type="warning" confirmText="changer de rôle" (onConfirm)="toggleRole()" (onCancel)="showRoleConfirm.set(false)">
     </app-confirm-modal>
     }
 
     <!-- Delete Confirmation Modal -->
     @if (showDeleteConfirm()) {
-    <app-confirm-modal title="Eliminar Usuario"
-        message="¿Estás seguro de que deseas eliminar este usuario? Esta acción no se puede deshacer." type="danger"
-        confirmText="Eliminar" (onConfirm)="deleteUser()" (onCancel)="showDeleteConfirm.set(false)">
+    <app-confirm-modal title="Supprimer un utilisateur"
+        message="Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action ne peut pas être annulée.." type="danger"
+        confirmText="Supprimer" (onConfirm)="deleteUser()" (onCancel)="showDeleteConfirm.set(false)">
     </app-confirm-modal>
     }
 
@@ -41,15 +41,15 @@
                 <thead class="bg-surface-subtle border-b border-border">
                     <tr>
                         <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">
-                            Usuario</th>
+                            Utilisateur</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">Email
                         </th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">Rol
                         </th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">Fecha
-                            Registro</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">Date
+                            Inscription</th>
                         <th class="px-6 py-4 text-right text-xs font-bold text-text-muted uppercase tracking-wider">
-                            Acciones</th>
+                            Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-border">
@@ -73,12 +73,12 @@
                             @if (user.role === 'Administrador') {
                             <span
                                 class="px-3 py-1 bg-accent/10 text-accent text-xs font-bold rounded-full border border-accent/20">
-                                Administrador
+                                Administrateur
                             </span>
                             } @else {
                             <span
                                 class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full border border-primary/20">
-                                Cliente
+                                Client
                             </span>
                             }
                         </td>
@@ -100,7 +100,7 @@
                                 } @else if (user.role === 'Administrador') {
                                 <button (click)="confirmToggleRole(user)"
                                     class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors"
-                                    title="Hacer Cliente">
+                                    title="Devenir client">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -126,18 +126,18 @@
         <!-- Pagination -->
         <div class="px-6 py-4 border-t border-border flex items-center justify-between bg-surface-subtle">
             <div class="text-sm text-text-muted">
-                Mostrando <span class="font-medium">{{ (currentPage() - 1) * pageSize() + 1 }}</span> a <span
+                Affichage <span class="font-medium">{{ (currentPage() - 1) * pageSize() + 1 }}</span> a <span
                     class="font-medium">{{ Math.min(currentPage() * pageSize(), totalItems()) }}</span> de <span
-                    class="font-medium">{{ totalItems() }}</span> resultados
+                    class="font-medium">{{ totalItems() }}</span> résultats
             </div>
             <div class="flex space-x-2">
                 <button (click)="onPageChange(currentPage() - 1)" [disabled]="!hasPreviousPage()"
                     class="px-3 py-1 rounded-md border border-border bg-surface text-text-muted hover:bg-surface-subtle disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-                    Anterior
+                    Précédent
                 </button>
                 <button (click)="onPageChange(currentPage() + 1)" [disabled]="!hasNextPage()"
                     class="px-3 py-1 rounded-md border border-border bg-surface text-text-muted hover:bg-surface-subtle disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-                    Siguiente
+                    Suivant
                 </button>
             </div>
         </div>

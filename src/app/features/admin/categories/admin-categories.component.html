@@ -6,7 +6,7 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
-            Nueva Categoría
+            Nouvelle catégorie
         </button>
     </div>
 
@@ -24,12 +24,12 @@
     </div>
 
     @if (showForm()) {
-    <app-modal [title]="editingCategory() ? 'Editar Categoría' : 'Nueva Categoría'" (onClose)="showForm.set(false)">
+    <app-modal [title]="editingCategory() ? 'Modifier la catégorie' : 'Nouvelle catégorie'" (onClose)="showForm.set(false)">
         <form [formGroup]="categoryForm" (ngSubmit)="saveCategory()" class="space-y-6">
             <div class="group">
                 <label
                     class="block text-sm font-medium text-text-main mb-2 group-focus-within:text-primary transition-colors">
-                    Nombre <span class="text-red-500">*</span>
+                    Nom <span class="text-red-500">*</span>
                 </label>
                 <div class="relative">
                     <input type="text" formControlName="name"
@@ -42,25 +42,25 @@
                     </svg>
                 </div>
                 @if (categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched) {
-                <p class="mt-1 text-xs text-red-500">El nombre es requerido</p>
+                <p class="mt-1 text-xs text-red-500">Le nom est obligatoire</p>
                 }
             </div>
             <div class="group">
                 <label
                     class="block text-sm font-medium text-text-main mb-2 group-focus-within:text-primary transition-colors">
-                    Descripción <span class="text-red-500">*</span>
+                    Description <span class="text-red-500">*</span>
                 </label>
                 <textarea formControlName="description" rows="3"
                     class="w-full px-4 py-2 bg-background border border-border rounded-lg text-text-main focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
                     [class.border-red-500]="categoryForm.get('description')?.invalid && categoryForm.get('description')?.touched"></textarea>
                 @if (categoryForm.get('description')?.invalid && categoryForm.get('description')?.touched) {
-                <p class="mt-1 text-xs text-red-500">La descripción es requerida</p>
+                <p class="mt-1 text-xs text-red-500">La description est obligatoire</p>
                 }
             </div>
             <div class="flex justify-end space-x-4 pt-4 border-t border-border">
                 <button type="button" (click)="showForm.set(false)"
                     class="px-6 py-2 bg-surface border border-border text-text-main rounded-lg hover:bg-surface-subtle transition-colors font-medium">
-                    Cancelar
+                    annuler
                 </button>
                 <button type="submit" [disabled]="categoryForm.invalid || saving()"
                     class="px-6 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:shadow-lg transition-all disabled:opacity-50 font-medium flex items-center gap-2">
@@ -74,7 +74,7 @@
                         </path>
                     </svg>
                     }
-                    {{ saving() ? 'Guardando...' : 'Guardar' }}
+                    {{ saving() ? 'Guardando...' : 'garder' }}
                 </button>
             </div>
         </form>
@@ -129,18 +129,18 @@
     <!-- Pagination -->
     <div class="mt-6 px-6 py-4 border-t border-border flex items-center justify-between bg-surface-subtle rounded-lg">
         <div class="text-sm text-text-muted">
-            Mostrando <span class="font-medium">{{ (currentPage() - 1) * pageSize() + 1 }}</span> a <span
+            Affichage <span class="font-medium">{{ (currentPage() - 1) * pageSize() + 1 }}</span> a <span
                 class="font-medium">{{ Math.min(currentPage() * pageSize(), totalItems()) }}</span> de <span
-                class="font-medium">{{ totalItems() }}</span> resultados
+                class="font-medium">{{ totalItems() }}</span> résultats
         </div>
         <div class="flex space-x-2">
             <button (click)="onPageChange(currentPage() - 1)" [disabled]="!hasPreviousPage()"
                 class="px-3 py-1 rounded-md border border-border bg-surface text-text-muted hover:bg-surface-subtle disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-                Anterior
+                Précédent
             </button>
             <button (click)="onPageChange(currentPage() + 1)" [disabled]="!hasNextPage()"
                 class="px-3 py-1 rounded-md border border-border bg-surface text-text-muted hover:bg-surface-subtle disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-                Siguiente
+                Suivant
             </button>
         </div>
     </div>

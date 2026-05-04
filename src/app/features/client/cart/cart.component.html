@@ -1,41 +1,35 @@
 <div class="min-h-screen bg-background py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-text-main mb-8">Carrito de Compras</h1>
+        <h1 class="text-3xl font-bold text-text-main mb-8">Mon Panier</h1>
 
         @if (cartService.cartItems().length === 0) {
-        <!-- Empty Cart State -->
         <div class="bg-surface rounded-lg shadow-md p-12 text-center">
             <svg class="w-24 h-24 mx-auto text-text-muted mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
-            <h2 class="text-2xl font-semibold text-text-main mb-2">Tu carrito está vacío</h2>
-            <p class="text-text-muted mb-6">Agrega algunos productos para comenzar</p>
+            <h2 class="text-2xl font-semibold text-text-main mb-2">Votre panier est vide</h2>
+            <p class="text-text-muted mb-6">Ajoutez des produits pour commencer</p>
             <a routerLink="/products"
                 class="inline-block px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-200 font-medium">
-                Explorar Productos
+                Explorer les Produits
             </a>
         </div>
         } @else {
-        <!-- Cart Items -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Items List -->
             <div class="lg:col-span-2 space-y-4">
                 @if (loading()) {
                 <app-loading />
                 } @else {
                 @for (item of cartService.cartItems(); track item.product.id) {
-                <div
-                    class="bg-surface rounded-lg shadow-md p-6 flex flex-col sm:flex-row gap-4 border border-border hover:shadow-lg transition-shadow">
-                    <!-- Product Image -->
+                <div class="bg-surface rounded-lg shadow-md p-6 flex flex-col sm:flex-row gap-4 border border-border hover:shadow-lg transition-shadow">
                     <div class="flex-shrink-0">
                         @if (item.product.images && item.product.images.length > 0) {
                         <img [src]="item.product.images[0].path" [alt]="item.product.name"
                             class="w-24 h-24 object-cover rounded-lg" />
                         } @else {
                         <div class="w-24 h-24 bg-surface-subtle rounded-lg flex items-center justify-center">
-                            <svg class="w-12 h-12 text-text-muted" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
+                            <svg class="w-12 h-12 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
@@ -43,35 +37,30 @@
                         }
                     </div>
 
-                    <!-- Product Details -->
                     <div class="flex-1 min-w-0">
                         <h3 class="text-lg font-semibold text-text-main mb-1">{{ item.product.name }}</h3>
                         <p class="text-text-muted text-sm mb-2 line-clamp-2">{{ item.product.description }}</p>
-                        <p class="text-primary font-bold text-xl">${{ item.product.price.toFixed(2) }}</p>
+                        <p class="text-primary font-bold text-xl">{{ item.product.price.toFixed(2) }} dh</p>
                     </div>
 
-                    <!-- Quantity Controls -->
                     <div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-4">
                         <div class="flex items-center gap-2 bg-surface-subtle rounded-lg p-1">
                             <button (click)="decreaseQuantity(item.product.id, item.quantity, item)"
-                                class="w-8 h-8 flex items-center justify-center rounded-md bg-surface hover:bg-primary hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-400"
+                                class="w-8 h-8 flex items-center justify-center rounded-md bg-surface hover:bg-primary hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                 [disabled]="item.quantity <= 1">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M20 12H4" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
                                 </svg>
                             </button>
                             <span class="w-12 text-center font-semibold text-text-main">{{ item.quantity }}</span>
                             <button (click)="getProductStock(item.product.id, item)" [disabled]="item.disabledInStock"
-                                class="w-8 h-8 flex items-center justify-center rounded-md bg-surface hover:bg-primary hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-400">
+                                class="w-8 h-8 flex items-center justify-center rounded-md bg-surface hover:bg-primary hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 4v16m8-8H4" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                                 </svg>
                             </button>
                         </div>
 
-                        <!-- Remove Button -->
                         <button (click)="removeItem(item.product.id)"
                             class="text-destructive hover:text-destructive/80 transition-colors p-2 rounded-lg hover:bg-destructive/10">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -85,37 +74,35 @@
                 }
             </div>
 
-            <!-- Order Summary -->
             <div class="lg:col-span-1">
                 <div class="bg-surface rounded-lg shadow-md p-6 border border-border sticky top-24">
-                    <h2 class="text-xl font-bold text-text-main mb-4">Resumen del Pedido</h2>
+                    <h2 class="text-xl font-bold text-text-main mb-4">Récapitulatif</h2>
 
                     <div class="space-y-3 mb-6">
                         <div class="flex justify-between text-text-main">
-                            <span>Subtotal ({{ cartService.itemCount() }} items)</span>
-                            <span class="font-semibold">${{ cartService.totalPrice().toFixed(2) }}</span>
+                            <span>Sous-total ({{ cartService.itemCount() }} articles)</span>
+                            <span class="font-semibold">{{ cartService.totalPrice().toFixed(2) }} dh</span>
                         </div>
                         <div class="border-t border-border pt-3">
                             <div class="flex justify-between text-lg font-bold text-text-main">
                                 <span>Total</span>
-                                <span class="text-primary">${{ cartService.totalPrice().toFixed(2) }}</span>
+                                <span class="text-primary">{{ cartService.totalPrice().toFixed(2) }} dh</span>
                             </div>
                         </div>
                     </div>
 
                     <button (click)="proceedToCheckout()"
                         class="w-full px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-200 font-medium mb-3">
-                        Proceder al Pago
+                        Procéder au Paiement
                     </button>
 
                     <a routerLink="/products"
                         class="block w-full px-6 py-3 bg-surface border border-border text-text-main rounded-lg hover:bg-surface-subtle transition-colors text-center font-medium">
-                        Continuar Comprando
+                        Continuer mes Achats
                     </a>
                 </div>
             </div>
         </div>
         }
-
     </div>
 </div>

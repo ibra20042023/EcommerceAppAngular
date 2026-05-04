@@ -100,6 +100,6 @@ export class ProductCatalogComponent implements OnInit {
 
   addToCart(product: Product) {
     this.cartService.addToCart(product, 1);
-    this.notificationService.show(`${product.name} agregado al carrito`, 'success');
+    this.notificationService.show(`${product.name} Ajouté au panier`, 'success');
   }
 }

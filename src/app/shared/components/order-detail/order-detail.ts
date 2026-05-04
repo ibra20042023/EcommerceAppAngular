@@ -28,11 +28,11 @@ export class OrderDetailComponent {
 
   // Admin functionality
   statusOptions = [
-    { value: OrderStatus.PENDING, label: 'Pendiente' },
-    { value: OrderStatus.PROCESSING, label: 'Procesando' },
-    { value: OrderStatus.SHIPPED, label: 'Enviado' },
-    { value: OrderStatus.DELIVERED, label: 'Entregado' },
-    { value: OrderStatus.CANCELLED, label: 'Cancelado' },
+    { value: OrderStatus.PENDING, label: 'En attente' },
+    { value: OrderStatus.PROCESSING, label: 'Traitement en cours' },
+    { value: OrderStatus.SHIPPED, label: 'Envoyé' },
+    { value: OrderStatus.DELIVERED, label: 'Livré' },
+    { value: OrderStatus.CANCELLED, label: 'Annulé' },
   ];
 
   private orderService = inject(OrderService);
@@ -142,17 +142,17 @@ export class OrderDetailComponent {
   getStatus(status: OrderStatus) {
     switch (status) {
       case OrderStatus.PENDING:
-        return 'Pendiente';
+        return 'En attente';
       case OrderStatus.PROCESSING:
-        return 'Procesando';
+        return 'Traitement en cours';
       case OrderStatus.SHIPPED:
-        return 'Enviado';
+        return 'Envoyé';
       case OrderStatus.DELIVERED:
-        return 'Entregado';
+        return 'Livré';
       case OrderStatus.CANCELLED:
-        return 'Cancelado';
+        return 'Annulé';
       default:
-        return 'Estado Desconocido';
+        return 'État deconnecté';
     }
   }
 

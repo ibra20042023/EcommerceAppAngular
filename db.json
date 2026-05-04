@@ -1,0 +1,636 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@eshop.com",
+      "password": "admin123",
+      "phone": "+33612345678",
+      "firstName": "Admin",
+      "lastName": "Dupont",
+      "role": "Administrador",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z",
+      "useSameAddressForBilling": false,
+      "shippingAddress": {
+        "street": "12 Rue de Rivoli",
+        "city": "Paris",
+        "state": "Île-de-France",
+        "code": "75001",
+        "country": "France"
+      },
+      "billingAddress": {
+        "street": "12 Rue de Rivoli",
+        "city": "Paris",
+        "state": "Île-de-France",
+        "code": "75001",
+        "country": "France"
+      }
+    },
+    {
+      "id": 2,
+      "email": "client@eshop.com",
+      "password": "client123",
+      "phone": "+33698765432",
+      "firstName": "Marie",
+      "lastName": "Martin",
+      "role": "Cliente",
+      "createdAt": "2024-02-15T00:00:00Z",
+      "updatedAt": "2024-03-10T00:00:00Z",
+      "useSameAddressForBilling": true,
+      "shippingAddress": {
+        "street": "5 Avenue des Champs-Élysées",
+        "city": "Paris",
+        "state": "Île-de-France",
+        "code": "75008",
+        "country": "France"
+      },
+      "billingAddress": {
+        "street": "5 Avenue des Champs-Élysées",
+        "city": "Paris",
+        "state": "Île-de-France",
+        "code": "75008",
+        "country": "France"
+      }
+    },
+    {
+      "id": 3,
+      "email": "jean@eshop.com",
+      "password": "jean123",
+      "phone": "+33611223344",
+      "firstName": "Jean",
+      "lastName": "Bernard",
+      "role": "Cliente",
+      "createdAt": "2024-03-01T00:00:00Z",
+      "updatedAt": "2024-03-01T00:00:00Z",
+      "shippingAddress": {
+        "street": "8 Rue Victor Hugo",
+        "city": "Lyon",
+        "state": "Auvergne-Rhône-Alpes",
+        "code": "69002",
+        "country": "France"
+      },
+      "billingAddress": {
+        "street": "8 Rue Victor Hugo",
+        "city": "Lyon",
+        "state": "Auvergne-Rhône-Alpes",
+        "code": "69002",
+        "country": "France"
+      }
+    },
+    {
+      "id": 1777349322922,
+      "email": "ibra@eshop.com",
+      "password": "client123",
+      "firstName": "ibrahim",
+      "lastName": "COULIBALY",
+      "phone": "",
+      "role": "Cliente",
+      "createdAt": "2026-04-28T04:08:42.922Z",
+      "updatedAt": "2026-04-28T04:08:42.922Z",
+      "shippingAddress": null,
+      "billingAddress": null
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Vêtements",
+      "description": "T-shirts, chemises, pulls et plus",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Manteaux",
+      "description": "Vestes, manteaux et parkas",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Électronique",
+      "description": "High-tech, gadgets et accessoires",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": 4,
+      "name": "Accessoires",
+      "description": "Sacs, ceintures, bijoux",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": 5,
+      "name": "Chaussures",
+      "description": "Sneakers, bottes et sandales",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "T-shirt Blanc",
+      "description": "T-shirt 100% coton bio, coupe droite et confortable pour toutes les occasions.",
+      "price": 300,
+      "stock": 50,
+      "featured": true,
+      "categoryId": 1,
+      "images": [
+        {
+          "id": 1,
+          "path": "http://localhost:4200/images/tshirtBlanc.jpg",
+          "productId": 1
+        }
+      ],
+      "createdAt": "2024-01-10T00:00:00Z",
+      "updatedAt": "2026-04-28T10:27:16.169Z"
+    },
+    {
+      "id": 2,
+      "name": "Jean Slim Noir",
+      "description": "Jean coupe slim en denim stretch, parfait pour un look urbain moderne.",
+      "price": 150,
+      "stock": 2,
+      "featured": false,
+      "categoryId": 1,
+      "images": [
+        {
+          "id": 2,
+          "path": "http://localhost:4200/images/jeanNoir.jpg",
+          "productId": 2
+        }
+      ],
+      "createdAt": "2024-01-11T00:00:00Z",
+      "updatedAt": "2024-01-11T00:00:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Chemise Oxford Bleue",
+      "description": "Chemise Oxford classique en coton, idéale pour le bureau ou les sorties décontractées.",
+      "price": 320,
+      "stock": 40,
+      "featured": false,
+      "categoryId": 1,
+      "images": [
+        {
+          "id": 3,
+          "path": "http://localhost:4200/images/chemiseBleu.jpg",
+          "productId": 3
+        }
+      ],
+      "createdAt": "2024-01-12T00:00:00Z",
+      "updatedAt": "2024-01-12T00:00:00Z"
+    },
+    {
+      "id": 4,
+      "name": "Pull Gris",
+      "description": "Pull en cachemire doux et chaud, coupe moderne avec col rond.",
+      "price": 400,
+      "stock": 5,
+      "featured": true,
+      "categoryId": 1,
+      "images": [
+        {
+          "id": 4,
+          "path": "http://localhost:4200/images/pullChachemire.jpg",
+          "productId": 4
+        }
+      ],
+      "createdAt": "2024-01-13T00:00:00Z",
+      "updatedAt": "2026-04-28T10:27:50.907Z"
+    },
+    {
+      "id": 5,
+      "name": "Veste en Cuir Noir",
+      "description": "Veste en cuir véritable, coupe ajustée avec fermeture éclair. Un classique intemporel.",
+      "price": 1490,
+      "stock": 15,
+      "featured": true,
+      "categoryId": 2,
+      "images": [
+        {
+          "id": 5,
+          "path": "http://localhost:4200/images/vesteCuir.jpg",
+          "productId": 5
+        }
+      ],
+      "createdAt": "2024-01-14T00:00:00Z",
+      "updatedAt": "2024-01-14T00:00:00Z"
+    },
+    {
+      "id": 6,
+      "name": "Manteau Laine Camel",
+      "description": "Manteau long en laine mélangée, élégant et chaud pour l'hiver.",
+      "price": 320,
+      "stock": 10,
+      "featured": false,
+      "categoryId": 2,
+      "images": [
+        {
+          "id": 6,
+          "path": "http://localhost:4200/images/MenteauLaine.jpg",
+          "productId": 6
+        }
+      ],
+      "createdAt": "2024-01-15T00:00:00Z",
+      "updatedAt": "2024-01-15T00:00:00Z"
+    },
+    {
+      "id": 7,
+      "name": "Doudoune Légère Navy",
+      "description": "Doudoune ultra-légère et compressible, idéale pour les transitions de saison.",
+      "price": 1200,
+      "stock": 25,
+      "featured": true,
+      "categoryId": 2,
+      "images": [
+        {
+          "id": 7,
+          "path": "http://localhost:4200/images/Doudoune.jpg",
+          "productId": 7
+        }
+      ],
+      "createdAt": "2024-01-16T00:00:00Z",
+      "updatedAt": "2024-01-16T00:00:00Z"
+    },
+    {
+      "id": 8,
+      "name": "Casque Audio Bluetooth",
+      "description": "Casque sans fil avec réduction de bruit active, autonomie 30h et son hi-fi.",
+      "price": 89.99,
+      "stock": 20,
+      "featured": false,
+      "categoryId": 3,
+      "images": [
+        {
+          "id": 8,
+          "path": "http://localhost:4200/images/Casque.jpg",
+          "productId": 8
+        }
+      ],
+      "createdAt": "2024-01-17T00:00:00Z",
+      "updatedAt": "2024-01-17T00:00:00Z"
+    },
+    {
+      "id": 9,
+      "name": "Montre Connectée Sport",
+      "description": "Smartwatch avec suivi sportif, GPS intégré, étanche 50m, autonomie 7 jours.",
+      "price": 199.99,
+      "stock": 10,
+      "featured": false,
+      "categoryId": 3,
+      "images": [
+        {
+          "id": 9,
+          "path": "http://localhost:4200/images/Montre.jpg",
+          "productId": 9
+        }
+      ],
+      "createdAt": "2024-01-18T00:00:00Z",
+      "updatedAt": "2024-01-18T00:00:00Z"
+    },
+    {
+      "id": 10,
+      "name": "Écouteurs Sans Fil Pro",
+      "description": "Écouteurs intra-auriculaires avec suppression active du bruit et étui de charge.",
+      "price": 500,
+      "stock": 35,
+      "featured": true,
+      "categoryId": 3,
+      "images": [
+        {
+          "id": 10,
+          "path": "http://localhost:4200/images/EcouteurSansFil.jpg",
+          "productId": 10
+        }
+      ],
+      "createdAt": "2024-01-19T00:00:00Z",
+      "updatedAt": "2024-01-19T00:00:00Z"
+    },
+    {
+      "id": 11,
+      "name": "Sac à Dos Urbain",
+      "description": "Sac à dos 30L en nylon résistant, design minimaliste.",
+      "price": 90,
+      "stock": 28,
+      "featured": true,
+      "categoryId": 4,
+      "images": [
+        {
+          "id": 11,
+          "path": "http://localhost:4200/images/SacDos.jpg",
+          "productId": 11
+        }
+      ],
+      "createdAt": "2024-01-20T00:00:00Z",
+      "updatedAt": "2024-01-20T00:00:00Z"
+    },
+    {
+      "id": 12,
+      "name": "Ceinture Cuir Marron",
+      "description": "Ceinture en cuir véritable tanné, boucle en laiton, largeur 35mm.",
+      "price": 34.99,
+      "stock": 45,
+      "featured": false,
+      "categoryId": 4,
+      "images": [
+        {
+          "id": 12,
+          "path": "http://localhost:4200/images/ceintureCuir.jpg",
+          "productId": 12
+        }
+      ],
+      "createdAt": "2024-01-21T00:00:00Z",
+      "updatedAt": "2024-01-21T00:00:00Z"
+    },
+    {
+      "id": 13,
+      "name": "Sneakers Blanches",
+      "description": "Sneakers minimalistes en cuir vegan, semelle EVA ultra-confortable.",
+      "price": 120,
+      "stock": 22,
+      "featured": true,
+      "categoryId": 5,
+      "images": [
+        {
+          "id": 13,
+          "path": "http://localhost:4200/images/sneakersBlanche.jpg",
+          "productId": 13
+        }
+      ],
+      "createdAt": "2024-01-22T00:00:00Z",
+      "updatedAt": "2024-01-22T00:00:00Z"
+    },
+    {
+      "id": 14,
+      "name": "Boots Chelsea Noires",
+      "description": "Boots Chelsea en cuir pleine fleur, élastiques sur les côtés, semelle en caoutchouc.",
+      "price": 729,
+      "stock": 18,
+      "featured": true,
+      "categoryId": 5,
+      "images": [
+        {
+          "id": 14,
+          "path": "http://localhost:4200/images/BootsChelsea.jpg",
+          "productId": 14
+        }
+      ],
+      "createdAt": "2024-01-23T00:00:00Z",
+      "updatedAt": "2024-01-23T00:00:00Z"
+    },
+    {
+      "id": 15,
+      "name": "Portefeuille Slim Cuir",
+      "description": "Portefeuille fin en cuir véritable, 6 emplacements cartes, protection RFID.",
+      "price": 39.99,
+      "stock": 60,
+      "featured": false,
+      "categoryId": 4,
+      "images": [
+        {
+          "id": 15,
+          "path": "http://localhost:4200/images/PortefeuilleCuir.jpg",
+          "productId": 15
+        }
+      ],
+      "createdAt": "2024-01-24T00:00:00Z",
+      "updatedAt": "2024-01-24T00:00:00Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "orderNumber": "ORD-2024-001",
+      "userId": 2,
+      "firstName": "Marie",
+      "lastName": "Martin",
+      "email": "client@eshop.com",
+      "status": "Delivered",
+      "subtotal": 89.98,
+      "tax": 11.7,
+      "shippingCost": 0,
+      "total": 101.68,
+      "createdAt": "2024-11-01T10:30:00Z",
+      "updatedAt": "2024-11-05T14:00:00Z",
+      "items": [
+        {
+          "productId": 1,
+          "productName": "T-shirt Premium Blanc",
+          "price": 29.99,
+          "quantity": 2
+        },
+        {
+          "productId": 11,
+          "productName": "Sac à Dos Urbain",
+          "price": 49.99,
+          "quantity": 1
+        }
+      ],
+      "billingAddress": {
+        "street": "5 Avenue des Champs-Élysées",
+        "city": "Paris",
+        "state": "Île-de-France",
+        "code": "75008",
+        "country": "France"
+      },
+      "shippingAddress": {
+        "street": "5 Avenue des Champs-Élysées",
+        "city": "Paris",
+        "state": "Île-de-France",
+        "code": "75008",
+        "country": "France",
+        "email": "client@eshop.com",
+        "phone": "+33698765432"
+      },
+      "paymentInfo": {
+        "method": "Credit Card",
+        "cardHolderName": "Marie Martin",
+        "cardLastFour": "4242"
+      }
+    },
+    {
+      "id": 2,
+      "orderNumber": "ORD-2024-002",
+      "userId": 2,
+      "firstName": "Marie",
+      "lastName": "Martin",
+      "email": "client@eshop.com",
+      "status": "Shipped",
+      "subtotal": 149.99,
+      "tax": 19.5,
+      "shippingCost": 5.99,
+      "total": 175.48,
+      "createdAt": "2024-11-20T09:15:00Z",
+      "updatedAt": "2024-11-22T11:00:00Z",
+      "items": [
+        {
+          "productId": 5,
+          "productName": "Veste en Cuir Noir",
+          "price": 149.99,
+          "quantity": 1
+        }
+      ],
+      "billingAddress": {
+        "street": "5 Avenue des Champs-Élysées",
+        "city": "Paris",
+        "state": "Île-de-France",
+        "code": "75008",
+        "country": "France"
+      },
+      "shippingAddress": {
+        "street": "5 Avenue des Champs-Élysées",
+        "city": "Paris",
+        "state": "Île-de-France",
+        "code": "75008",
+        "country": "France",
+        "email": "client@eshop.com",
+        "phone": "+33698765432"
+      },
+      "paymentInfo": {
+        "method": "Credit Card",
+        "cardHolderName": "Marie Martin",
+        "cardLastFour": "4242"
+      }
+    },
+    {
+      "id": 3,
+      "orderNumber": "ORD-2024-003",
+      "userId": 3,
+      "firstName": "Jean",
+      "lastName": "Bernard",
+      "email": "jean@eshop.com",
+      "status": "Pending",
+      "subtotal": 259.98,
+      "tax": 33.8,
+      "shippingCost": 0,
+      "total": 293.78,
+      "createdAt": "2024-12-01T16:45:00Z",
+      "updatedAt": "2026-04-28T04:02:45.567Z",
+      "items": [
+        {
+          "productId": 6,
+          "productName": "Manteau Laine Camel",
+          "price": 199.99,
+          "quantity": 1
+        },
+        {
+          "productId": 12,
+          "productName": "Ceinture Cuir Marron",
+          "price": 34.99,
+          "quantity": 1
+        },
+        {
+          "productId": 15,
+          "productName": "Portefeuille Slim Cuir",
+          "price": 39.99,
+          "quantity": 1
+        }
+      ],
+      "billingAddress": {
+        "street": "8 Rue Victor Hugo",
+        "city": "Lyon",
+        "state": "Auvergne-Rhône-Alpes",
+        "code": "69002",
+        "country": "France"
+      },
+      "shippingAddress": {
+        "street": "8 Rue Victor Hugo",
+        "city": "Lyon",
+        "state": "Auvergne-Rhône-Alpes",
+        "code": "69002",
+        "country": "France",
+        "email": "jean@eshop.com",
+        "phone": "+33611223344"
+      },
+      "paymentInfo": {
+        "method": "Debit Card",
+        "cardHolderName": "Jean Bernard",
+        "cardLastFour": "1234"
+      }
+    },
+    {
+      "id": 4,
+      "orderNumber": "ORD-2024-004",
+      "userId": 3,
+      "firstName": "Jean",
+      "lastName": "Bernard",
+      "email": "jean@eshop.com",
+      "status": "Processing",
+      "subtotal": 89.99,
+      "tax": 11.7,
+      "shippingCost": 5.99,
+      "total": 107.68,
+      "createdAt": "2024-12-10T08:00:00Z",
+      "updatedAt": "2026-04-28T04:02:13.080Z",
+      "items": [
+        {
+          "productId": 8,
+          "productName": "Casque Audio Bluetooth",
+          "price": 89.99,
+          "quantity": 1
+        }
+      ],
+      "billingAddress": {
+        "street": "8 Rue Victor Hugo",
+        "city": "Lyon",
+        "state": "Auvergne-Rhône-Alpes",
+        "code": "69002",
+        "country": "France"
+      },
+      "shippingAddress": {
+        "street": "8 Rue Victor Hugo",
+        "city": "Lyon",
+        "state": "Auvergne-Rhône-Alpes",
+        "code": "69002",
+        "country": "France",
+        "email": "jean@eshop.com",
+        "phone": "+33611223344"
+      },
+      "paymentInfo": {
+        "method": "Credit Card",
+        "cardHolderName": "Jean Bernard",
+        "cardLastFour": "5678"
+      }
+    }
+  ],
+  "wishlists": [
+    {
+      "id": 1,
+      "userId": 2,
+      "productId": 5
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "productId": 8
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "productId": 13
+    },
+    {
+      "id": 4,
+      "userId": 3,
+      "productId": 6
+    },
+    {
+      "id": 1777349337872,
+      "userId": 1777349322922,
+      "productId": 5
+    },
+    {
+      "id": 1777349339243,
+      "userId": 1777349322922,
+      "productId": 7
+    },
+    {
+      "id": 1777349538977,
+      "userId": 1777349322922,
+      "productId": 4
+    }
+  ]
+}

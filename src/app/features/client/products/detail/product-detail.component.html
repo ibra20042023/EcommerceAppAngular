@@ -3,9 +3,7 @@
     <app-loading />
     } @else if (product()) {
     <div class="bg-surface rounded-2xl border border-border overflow-hidden shadow-sm">
-
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-8">
-            <!-- Product Images -->
             <div class="p-8 bg-surface-subtle flex flex-col items-center justify-center">
                 <div class="aspect-square w-full max-w-md bg-white rounded-xl overflow-hidden shadow-md mb-4 relative cursor-zoom-in"
                     (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()">
@@ -21,7 +19,6 @@
                     }
                 </div>
 
-                <!-- Thumbnails -->
                 @if (product()?.images?.length ?? 0 > 1) {
                 <div class="flex space-x-4 overflow-x-auto py-2 max-w-full">
                     @for (image of product()?.images; track image.id) {
@@ -36,25 +33,23 @@
                 }
             </div>
 
-
-            <!-- Product Details -->
             <div class="p-8 lg:p-12 flex flex-col">
                 <div class="mb-auto">
                     <div class="flex items-center justify-between mb-4">
                         @if (product()?.featured) {
                         <span
                             class="px-3 py-1 bg-accent/10 text-accent text-sm font-bold uppercase tracking-wider rounded-full">
-                            Destacado
+                            En vedette
                         </span>
                         }
-                        <span class="text-sm text-text-muted">ID: {{ product()?.id }}</span>
+                        <span class="text-sm text-text-muted">ID : {{ product()?.id }}</span>
                     </div>
 
                     <div class="flex items-center justify-between mb-4">
                         <h1 class="text-4xl font-bold text-text-main truncate">{{ product()?.name }}</h1>
                         <button (click)="toggleWishlist()" [disabled]="loading()"
                             class="px-3 py-3 bg-surface border border-border text-text-main rounded-xl hover:bg-surface-subtle transition-all flex items-center justify-center group"
-                            [title]="isInWishlist() ? 'Eliminar de deseados' : 'Agregar a deseados'">
+                            [title]="isInWishlist() ? 'Retirer des favoris' : 'Ajouter aux favoris'">
                             <svg class="w-6 h-6 transition-colors duration-200" [class.text-red-500]="isInWishlist()"
                                 [class.fill-current]="isInWishlist()" [class.text-text-muted]="!isInWishlist()"
                                 [class.group-hover:text-red-500]="!isInWishlist()" fill="none" stroke="currentColor"
@@ -66,14 +61,14 @@
                     </div>
 
                     <div class="flex items-baseline gap-4 mb-6">
-                        <span class="text-3xl font-bold text-primary">${{ product()?.price?.toFixed(2) }}</span>
+                        <span class="text-3xl font-bold text-primary">{{ product()?.price?.toFixed(2) }} dh </span>
                         @if (product()?.stock ?? 0 > 0) {
                         <span class="text-sm text-green-600 font-medium bg-green-100 px-2 py-1 rounded-full">
                             Disponible ({{ product()?.stock }})
                         </span>
                         } @else {
                         <span class="text-sm text-red-600 font-medium bg-red-100 px-2 py-1 rounded-full">
-                            Agotado
+                            Épuisé
                         </span>
                         }
                     </div>
@@ -83,22 +78,21 @@
                     </p>
 
                     <div class="border-t border-border pt-6 mb-8">
-                        <h3 class="text-sm font-semibold text-text-main uppercase tracking-wider mb-3">Características
-                        </h3>
+                        <h3 class="text-sm font-semibold text-text-main uppercase tracking-wider mb-3">Caractéristiques</h3>
                         <ul class="space-y-2 text-text-muted">
                             <li class="flex items-center gap-2">
                                 <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7" />
                                 </svg>
-                                Envío gratis disponible
+                                Livraison gratuite disponible
                             </li>
                             <li class="flex items-center gap-2">
                                 <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                Garantía de 2 años
+                                Garantie 2 ans
                             </li>
                         </ul>
                     </div>
@@ -111,13 +105,12 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
-                        Añadir al Carrito
+                        Ajouter au Panier
                     </button>
-
 
                     <a routerLink="/products"
                         class="px-8 py-4 bg-surface border border-border text-text-main text-lg font-bold rounded-xl hover:bg-surface-subtle transition-all flex items-center justify-center">
-                        Volver al Catálogo
+                        Retour au Catalogue
                     </a>
                 </div>
             </div>
@@ -126,11 +119,11 @@
     } @else {
     <div class="text-center py-20">
         <div class="text-6xl mb-4">😕</div>
-        <h2 class="text-2xl font-bold text-text-main mb-2">Producto no encontrado</h2>
-        <p class="text-text-muted mb-8">El producto que buscas no existe o ha sido eliminado.</p>
+        <h2 class="text-2xl font-bold text-text-main mb-2">Produit introuvable</h2>
+        <p class="text-text-muted mb-8">Le produit que vous cherchez n'existe pas ou a été supprimé.</p>
         <a routerLink="/products"
             class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
-            Volver al Catálogo
+            Retour au Catalogue
         </a>
     </div>
     }

@@ -153,17 +153,17 @@ export class AdminOrdersComponent implements OnInit {
   getStatusLabel(status: OrderStatus): string {
     switch (status) {
       case OrderStatus.PENDING:
-        return 'Pendiente';
+        return 'En attente';
       case OrderStatus.PROCESSING:
-        return 'Procesando';
+        return 'Traitement en cours';
       case OrderStatus.SHIPPED:
-        return 'Enviado';
+        return 'Envoyé';
       case OrderStatus.DELIVERED:
-        return 'Entregado';
+        return 'Livré';
       case OrderStatus.CANCELLED:
-        return 'Cancelado';
+        return 'Annulé';
       default:
-        return 'Desconocido';
+        return 'Deconnecté';
     }
   }
 }
