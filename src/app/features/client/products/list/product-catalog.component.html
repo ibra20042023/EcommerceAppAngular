@@ -1,0 +1,60 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-4xl font-bold text-text-main mb-8">Catalogue de Produits</h1>
+
+    <div class="bg-surface rounded-xl border border-border p-6 mb-8 shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-text-main mb-2">Rechercher</label>
+                <input type="text" [formControl]="searchControl" placeholder="Rechercher des produits..."
+                    class="w-full px-4 py-2 bg-background border border-border rounded-lg text-text-main placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" />
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-text-main mb-2">Catégorie</label>
+                <select [formControl]="categoryControl"
+                    class="w-full px-4 py-2 bg-background border border-border rounded-lg text-text-main focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                    <option value="">Toutes</option>
+                    @for (category of categories(); track category.id) {
+                    <option [value]="category.id">{{ category.name }}</option>
+                    }
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-text-main mb-2">Prix Minimum</label>
+                <input type="number" [formControl]="minPriceControl" placeholder="0"
+                    class="w-full px-4 py-2 bg-background border border-border rounded-lg text-text-main focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" />
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-text-main mb-2">Prix Maximum</label>
+                <input type="number" [formControl]="maxPriceControl" placeholder="10000"
+                    class="w-full px-4 py-2 bg-background border border-border rounded-lg text-text-main focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" />
+            </div>
+        </div>
+    </div>
+
+    @if (loading()) {
+    <app-loading />
+    } @else { @if (products().length > 0) {
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+        @for (product of products(); track product.id) {
+        <app-product-card [product]="product" [showFeaturedBadge]="true" (addToCartClick)="addToCart($event)" />
+        }
+    </div>
+
+    @if (totalPages() > 1) {
+    <app-pagination [currentPage]="currentPage()" [totalPages]="totalPages()" [hasNextPage]="hasNextPage()"
+        [hasPreviousPage]="hasPreviousPage()" (onGotToPage)="changePage($event)" />
+    } } @else {
+    <div class="text-center py-20 bg-surface rounded-2xl border border-border border-dashed">
+        <div class="text-6xl mb-4">🔍</div>
+        <h3 class="text-xl font-bold text-text-main mb-2">Aucun produit trouvé</h3>
+        <p class="text-text-muted">Essayez d'ajuster vos filtres de recherche</p>
+        <button (click)="searchControl.setValue(''); categoryControl.setValue('')"
+            class="mt-6 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
+            Réinitialiser les filtres
+        </button>
+    </div>
+    } }
+</div>
