@@ -1,0 +1,140 @@
+<div>
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+        <h1 class="text-3xl font-bold text-text-main">Gestion des commandes</h1>
+    </div>
+
+    <!-- Search Filter -->
+    <div class="mb-6">
+        <div class="relative">
+            <input type="text" [formControl]="searchControl" placeholder="Buscar por número de pedido..."
+                class="w-full pl-10 pr-4 py-2 bg-surface border border-border rounded-lg text-text-main focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" />
+            <svg class="w-5 h-5 text-text-muted absolute left-3 top-2.5" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Cancel Confirmation Modal -->
+    @if (showCancelConfirm()) {
+    <app-confirm-modal title="annuler Pedido"
+        message="¿Estás seguro de que deseas annuler este pedido? Esta acción no se puede deshacer." type="danger"
+        confirmText="annuler Pedido" (onConfirm)="cancelOrder()" (onCancel)="showCancelConfirm.set(false)">
+    </app-confirm-modal>
+    }
+
+    <!-- Orders Table -->
+    @if (loading()) {
+    <app-loading />
+    } @else {
+    <div class="bg-surface rounded-xl border border-border overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-surface-subtle border-b border-border">
+                    <tr>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">
+                            Numéro de commande</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">
+                            Utilisateur</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">
+                            Total</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">
+                            État</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-text-muted uppercase tracking-wider">
+                            Date</th>
+                        <th class="px-6 py-4 text-right text-xs font-bold text-text-muted uppercase tracking-wider">
+                            Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-border">
+                    @for (order of orders(); track order.id) {
+                    <tr class="hover:bg-surface-subtle/50 transition-colors group">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="font-semibold text-primary">#{{ order.orderNumber }}</span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-text-muted">
+                            <div class="flex flex-col">
+                                <span class="font-medium text-text-main">{{ order.email }}</span>
+                                <span class="text-xs">{{ order.firstName }} {{ order.lastName }}</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-text-main">
+                            {{ order.total.toFixed(2) }} dh
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold border"
+                                [ngClass]="getStatusBadgeClass(order.status)">
+                                {{ getStatusLabel(order.status) }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-text-muted">
+                            {{ formatDate(order.createdAt) }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <div
+                                class="flex justify-end space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <a [routerLink]="['/admin/orders', order.id, 'detail']"
+                                    class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                                    title="Ver detalle">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </a>
+                                @if (canCancel(order.status)) {
+                                <button (click)="confirmCancel(order.id)"
+                                    class="p-2 text-destructive hover:bg-destructive/10 rounded-lg transition-colors"
+                                    title="annuler pedido">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                    } @empty {
+                    <tr>
+                        <td colspan="6" class="px-6 py-12 text-center">
+                            <div class="flex flex-col items-center justify-center space-y-3">
+                                <svg class="w-16 h-16 text-text-muted opacity-50" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                </svg>
+                                <p class="text-text-muted text-lg">Aucune commande n'a été trouvée</p>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        @if (totalItems() > 0) {
+        <div class="px-6 py-4 border-t border-border flex items-center justify-between bg-surface-subtle">
+            <div class="text-sm text-text-muted">
+                Affichage <span class="font-medium">{{ (currentPage() - 1) * pageSize() + 1 }}</span> a <span
+                    class="font-medium">{{ Math.min(currentPage() * pageSize(), totalItems()) }}</span> de <span
+                    class="font-medium">{{ totalItems() }}</span> résultats
+            </div>
+            <div class="flex space-x-2">
+                <button (click)="onPageChange(currentPage() - 1)" [disabled]="!hasPreviousPage()"
+                    class="px-3 py-1 rounded-md border border-border bg-surface text-text-muted hover:bg-surface-subtle disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                    Précédent
+                </button>
+                <button (click)="onPageChange(currentPage() + 1)" [disabled]="!hasNextPage()"
+                    class="px-3 py-1 rounded-md border border-border bg-surface text-text-muted hover:bg-surface-subtle disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                    Suivant
+                </button>
+            </div>
+        </div>
+        }
+    </div>
+    }
+</div>

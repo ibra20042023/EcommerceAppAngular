@@ -1,0 +1,5 @@
+@if (loading()) {
+<app-loading></app-loading>
+}@else {
+<app-order-detail [order]="order()" (reloadOrder)="loadOrder($event)"></app-order-detail>
+}
