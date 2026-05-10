@@ -1,4 +1,4 @@
-# KignonShop 🛍️
+# EcommerceAppAngular 🛍️
 
 Application e-commerce fullstack moderne développée avec Angular 21 et TailwindCSS.
 
@@ -49,8 +49,8 @@ Application e-commerce fullstack moderne développée avec Angular 21 et Tailwin
 
 ```bash
 # Cloner le projet
-git clone https://github.com/TON_USERNAME/kignonshop.git
-cd kignonshop
+git clone https://github.com/TON_USERNAME/EcommerceAppAngular.git
+cd EcommerceAppAngular
 
 # Installer les dépendances
 npm install
