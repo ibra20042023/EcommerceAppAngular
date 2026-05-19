@@ -21,8 +21,11 @@ export class CartComponent {
   private authModalService = inject(AuthModalService);
   private router = inject(Router);
 
+<<<<<<< HEAD
   // Get cart items
 
+=======
+>>>>>>> origin/main
   // Increase quantity
   increaseQuantity(productId: number, currentQuantity: number): void {
     this.cartService.updateQuantity(productId, currentQuantity + 1);
