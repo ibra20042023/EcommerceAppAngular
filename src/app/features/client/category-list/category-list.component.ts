@@ -5,7 +5,7 @@ import { CategoryService } from '../../../core/services/category.service';
 import { Category } from '../../../core/models/models';
 import { LoadingComponent } from '../../../shared/components/loading/loading.component';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination';
-
+// Note: The code for CartComponent is not included here as it is not relevant to the CategoryListComponent.
 @Component({
   selector: 'app-category-list',
   imports: [RouterLink, LoadingComponent, PaginationComponent],
