@@ -8,7 +8,7 @@ import { ProductService } from '../../../../core/services/product.service';
 import { WishlistService } from '../../../../core/services/wishlist.service';
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import { AuthService } from '../../../../core/services/auth.service';
-
+//jdhhfdhuhu
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
