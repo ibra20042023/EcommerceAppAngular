@@ -11,6 +11,10 @@ import { Address, CreateOrderRequest, PaymentMethod, User } from '../../../core/
 import { UserService } from '../../../core/services/user.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { phoneValidator } from '../../../core/utils/phone.validator';
+<<<<<<< HEAD
+// Note: The code for CartComponent and CategoryListComponent is not included here as it is not relevant to the CheckoutComponent.
+=======
+>>>>>>> origin/main
 
 @Component({
   selector: 'app-checkout',

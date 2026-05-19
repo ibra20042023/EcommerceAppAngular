@@ -7,7 +7,11 @@ import { ForgotPasswordComponent } from '../../auth/forgot-password/forgot-passw
 import { ResetPasswordComponent } from '../../auth/reset-password/reset-password.component';
 import { WishlistService } from '../../../core/services/wishlist.service';
 import { AuthService } from '../../../core/services/auth.service';
+<<<<<<< HEAD
+// Note: The code for CartComponent and CategoryListComponent is not included here as it is not relevant to the ClientLayoutComponent.
+=======
 
+>>>>>>> origin/main
 @Component({
   selector: 'app-client-layout',
   standalone: true,
